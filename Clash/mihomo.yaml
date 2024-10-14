@@ -1,0 +1,267 @@
+# 2024-10-13
+# 节点
+proxies:
+  - name: USA                 
+    type: trojan
+    server: mhy2253.xyz                         
+    port: 443                                     
+    password: hhhhhhhhhhh                            
+    client-fingerprint: chrome
+    udp: true
+    sni: mhy2253.xyz                       
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+  - name: JAPAN    
+    type: trojan
+    server: mhy2253.com   
+    port: 443
+    password: xHvjjjjjjjkkkooo
+    client-fingerprint: chrome
+    udp: true
+    sni: mhy2253.com
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true 
+
+# general
+port: 7890
+socks-port: 7891
+mixed-port: 7892
+redir-port: 7893
+tproxy-port: 7894
+unified-delay: true
+geodata-mode: false
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 24
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: chrome
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+udp: true
+geox-url:
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
+tun:
+  enable: false
+  stack: system
+  dns-hijack:
+    - any:53
+  auto-route: true
+  auto-detect-interface: true
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - +.lan
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://223.5.5.5/dns-query#h3=true
+    - https://223.6.6.6/dns-query#h3=true
+
+# 策略组
+proxy-groups: 
+  - name: Proxy
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - USA
+      - JAPAN
+  
+# 分流规则指向
+rules:
+  #direct
+ - IP-ASN,132203,DIRECT
+ - IP-ASN,56040,DIRECT
+ - IP-ASN,45090,DIRECT
+ - IP-ASN,59930,Proxy,no-resolve
+ - IP-ASN,211157,Proxy,no-resolve
+ - IP-ASN,62014,Proxy,no-resolve
+ - IP-CIDR,64.181.244.241/32,DIRECT
+ - IP-CIDR,141.147.145.44/32,DIRECT
+ - IP-CIDR,195.245.229.172/32,DIRECT
+ - DOMAIN-SUFFIX,linkroad.io,Proxy
+ - RULE-SET,aliyun,DIRECT
+ - RULE-SET,tencent,DIRECT
+ - RULE-SET,bilibili,DIRECT
+ - RULE-SET,apple,DIRECT
+ - RULE-SET,oracle,DIRECT
+ - RULE-SET,paypal,DIRECT
+ - RULE-SET,digitalocean,DIRECT
+ - RULE-SET,cn,DIRECT
+ # proxy
+ - RULE-SET,google,Proxy
+ - RULE-SET,github,Proxy
+ - RULE-SET,openai,Proxy
+ - RULE-SET,amazon,Proxy
+ - RULE-SET,microsoft,Proxy
+ - RULE-SET,twitter,Proxy
+ - RULE-SET,youtube,Proxy
+ - RULE-SET,cloudflare,Proxy
+ - RULE-SET,telegram,Proxy
+ - RULE-SET,dropbox,Proxy
+ - RULE-SET,facebook,Proxy
+ - RULE-SET,proxymedia,Proxy
+ - RULE-SET,proxy,Proxy
+ 
+ # final
+ - RULE-SET,Lan,DIRECT
+ - RULE-SET,bilibiliip,DIRECT
+ - RULE-SET,cloudflareip,Proxy
+ - RULE-SET,telegramip,Proxy
+ - RULE-SET,googleip,Proxy
+ - GEOIP,CN,DIRECT
+ - MATCH,Proxy
+
+
+# 订阅规则
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
+
+rule-providers:
+# direct
+  aliyun:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/aliyun.yaml'
+    
+  apple:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/apple.yaml'
+
+  bilibili:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/bilibili.yaml'
+    
+  digitalocean:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/digitalocean.yaml'
+    
+  oracle:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/oracle.yaml'
+    
+  paypal:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/paypal.yaml'
+    
+  tencent:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/tencent.yaml'
+    
+  # proxy
+  amazon:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/amazon.yaml'
+    
+  twitter:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/twitter.yaml'
+    
+  youtube:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/youtube.yaml'
+    
+  cloudflare:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/cloudflare.yaml'
+    
+  openai:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/openai.yaml'
+    
+  proxymedia:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/proxymedia.yaml'
+    
+  telegram:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/telegram.yaml'
+    
+  dropbox:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/dropbox.yaml'
+    
+  facebook:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/facebook.yaml'
+    
+  github:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/github.yaml'
+    
+  google:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/google.yaml'
+    
+  microsoft:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/microsoft.yaml'
+    
+  onedrive:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/onedrive.yaml'
+    
+  #final
+  cn:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/cn.yaml'
+    
+  proxy:
+    <<: *domain
+    url: 'https://mhy2253.me/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo-lite/geosite/proxy.yaml'
+  Lan:
+    <<: *domain
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geosite/private.yaml'
+
+  #ip
+  telegramip:
+    <<: *ip
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/telegram.yaml'
+  googleip:
+    <<: *ip
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/google.yaml'
+  bilibiliip:
+    <<: *ip
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/bilibili.yaml'
+  cloudflareip:
+    <<: *ip
+    url: 'https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/cloudflare.yaml'
+
+
+  
