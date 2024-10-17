@@ -70,10 +70,6 @@ tailscale up --netfilter-mode=off
 ```
 service tailscale restart && tailscale up
 ```
-> 复制屏幕连接到浏览器打开并登录自己的tailscale账户。
-
-### 第三步 设置Tailscale自启动
-
 
 ### 第四步 网络及防火墙设置
 
