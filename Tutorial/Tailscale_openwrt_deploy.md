@@ -8,6 +8,10 @@ wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && ta
 ```
 opkg update && opkg install libustream-openssl ca-bundle kmod-tunopkg iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
 ```
+### 3.Grant executable permission
+```
+chmod +x /usr/bin/tailscale && chmod +x /usr/bin/tailscaled
+```
 ### 第二步 启动Tailscale，并关联账户
 ```
 service tailscale restart && tailscale up
