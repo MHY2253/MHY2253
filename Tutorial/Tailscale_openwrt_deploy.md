@@ -2,7 +2,7 @@
 
 ### 第一步 安装Tailscale
 ```
-wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tailscale_1.76.1_amd64.tgz && mv /tailscale_1.76.1_amd64/tailscale tailscaled /usr/bin 
+wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tar -zxvf tailscale_1.76.1_amd64.tgz && mv /tailscale_1.76.1_amd64/tailscale tailscaled /usr/bin 
 
 opkg install tailscale
 
