@@ -62,7 +62,7 @@ chmod +x /etc/init.d/tailscale
 ```
 /etc/init.d/tailscale start && /etc/init.d/tailscale enable
 ```
-### 5.Start Tailscale and link account
+### 7.Link your account
 ```
 service tailscale restart && tailscale up
 ```
