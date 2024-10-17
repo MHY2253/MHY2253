@@ -1,13 +1,13 @@
 ## Tailscale for OpenWrt安装：
 
-### 第一步 安装Tailscale
+### 1.Download and install Tailscale
 ```
 wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tar -zxvf tailscale_1.76.1_amd64.tgz && mv /tailscale_1.76.1_amd64/tailscale tailscaled /usr/bin 
 
 ```
-### 2.安装依赖、删除软件包
+### 2.Install dependencies and Remove software package
 ```
-opkg install iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
+opkg update && opkg install libustream-openssl ca-bundle kmod-tunopkg iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
 ```
 ### 第二步 启动Tailscale，并关联账户
 ```
