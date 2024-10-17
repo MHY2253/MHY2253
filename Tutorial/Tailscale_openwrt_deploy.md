@@ -62,7 +62,7 @@ chmod +x /etc/init.d/tailscale
 ```
 /etc/init.d/tailscale start && /etc/init.d/tailscale enable
 ```
-In OpenWrt → System → Startup → Local Startup, delete the existing Tailscale command (if any) and add a line:
+> In OpenWrt → System → Startup → Local Startup, delete the existing Tailscale command (if any) and add a line:
 ```
 tailscale up --netfilter-mode=off
 ```
