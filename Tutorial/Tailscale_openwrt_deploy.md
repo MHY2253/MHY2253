@@ -71,13 +71,13 @@ tailscale up --netfilter-mode=off
 service tailscale restart && tailscale up
 ```
 
-### 第四步 网络及防火墙设置
+### 8.Network and Firewall Settings
 
-> 1.创建一个新接口，路径：OpenWrt→网络→接口→添加新接口
+> 1.Create a new interface with the following settings:
 ```
-名称：tailscale
-协议：不配置协议
-设备：tailscale0
+name：tailscale
+protocol:不配置协议
+device:tailscale0
 ```
 > 2.创建一个新的防火墙“区域”，路径：OpenWrt→网络→防火墙→区域→添加
 ```
