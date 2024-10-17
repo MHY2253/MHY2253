@@ -54,6 +54,14 @@ stop_service() {
   /usr/bin/tailscaled --cleanup
 }
 ```
+### 5.赋予脚本可执行权限
+```
+chmod +x /etc/init.d/tailscale
+```
+### 6.Start and enable startup at boot
+```
+/etc/init.d/tailscale start && /etc/init.d/tailscale enable
+```
 ### 5.Start Tailscale and link account
 ```
 service tailscale restart && tailscale up
