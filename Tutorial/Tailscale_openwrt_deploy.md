@@ -2,7 +2,7 @@
 
 ### 第一步 安装Tailscale
 ```
-opkg update
+wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tailscale_1.76.1_amd64.tgz
 
 opkg install tailscale
 
