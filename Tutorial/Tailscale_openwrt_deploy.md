@@ -54,7 +54,7 @@ stop_service() {
   /usr/bin/tailscaled --cleanup
 }
 ```
-### 第二步 启动Tailscale，并关联账户
+### 5.Start Tailscale and link account
 ```
 service tailscale restart && tailscale up
 ```
