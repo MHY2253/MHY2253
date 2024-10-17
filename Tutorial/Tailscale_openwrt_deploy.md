@@ -62,6 +62,11 @@ chmod +x /etc/init.d/tailscale
 ```
 /etc/init.d/tailscale start && /etc/init.d/tailscale enable
 ```
+or
+> 在OpenWrt→系统→启动项→本地启动脚本中，将原有的Tailscale命令删除（若有），并添加一行：
+```
+tailscale up --netfilter-mode=off
+```
 ### 7.Link your account
 ```
 service tailscale restart && tailscale up
@@ -70,10 +75,7 @@ service tailscale restart && tailscale up
 
 ### 第三步 设置Tailscale自启动
 
-> 在OpenWrt→系统→启动项→本地启动脚本中，将原有的Tailscale命令删除（若有），并添加一行：
-```
-tailscale up --netfilter-mode=off
-```
+
 ### 第四步 网络及防火墙设置
 
 > 1.创建一个新接口，路径：OpenWrt→网络→接口→添加新接口
