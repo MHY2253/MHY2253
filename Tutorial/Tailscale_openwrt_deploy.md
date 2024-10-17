@@ -4,6 +4,9 @@
 ```
 wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tar -zxvf tailscale_1.76.1_amd64.tgz && mv /tailscale_1.76.1_amd64/tailscale tailscaled /usr/bin 
 
+```
+### 2.安装依赖、删除软件包
+```
 opkg install iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
 ```
 ### 第二步 启动Tailscale，并关联账户
