@@ -12,6 +12,48 @@ opkg update && opkg install libustream-openssl ca-bundle kmod-tunopkg iptables-n
 ```
 chmod +x /usr/bin/tailscale && chmod +x /usr/bin/tailscaled
 ```
+### 4.Add startup script
+```
+vim /etc/init.d/tailscale
+```
+```
+#!/bin/sh /etc/rc.common
+
+# Copyright 2020 Google LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+USE_PROCD=1
+START=90
+STOP=1
+
+start_service() {
+  procd_open_instance
+  procd_set_param env TS_DEBUG_FIREWALL_MODE=auto
+  procd_set_param command /usr/bin/tailscaled
+
+  # Set the port to listen on for incoming VPN packets.
+  # Remote nodes will automatically be informed about the new port number,
+  # but you might want to configure this in order to set external firewall
+  # settings.
+  procd_append_param command --port 41641
+
+  # OpenWRT /var is a symlink to /tmp, so write persistent state elsewhere.
+  procd_append_param command --state /etc/config/tailscaled.state
+  
+  # Persist files for TLS cert & Taildrop files
+  procd_append_param command --statedir /etc/tailscale/
+
+  procd_set_param respawn
+  procd_set_param stdout 1
+  procd_set_param stderr 1
+
+  procd_close_instance
+}
+
+stop_service() {
+  /usr/bin/tailscaled --cleanup
+}
+```
 ### 第二步 启动Tailscale，并关联账户
 ```
 service tailscale restart && tailscale up
