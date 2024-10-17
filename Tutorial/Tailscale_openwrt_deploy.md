@@ -63,7 +63,7 @@ chmod +x /etc/init.d/tailscale
 /etc/init.d/tailscale start && /etc/init.d/tailscale enable
 ```
 or
-> 在OpenWrt→系统→启动项→本地启动脚本中，将原有的Tailscale命令删除（若有），并添加一行：
+在OpenWrt→系统→启动项→本地启动脚本中，将原有的Tailscale命令删除（若有），并添加一行：
 ```
 tailscale up --netfilter-mode=off
 ```
