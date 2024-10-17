@@ -3,7 +3,6 @@
 ### 1.Download and install Tailscale
 ```
 wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tar -zxvf tailscale_1.76.1_amd64.tgz && mv /tailscale_1.76.1_amd64/tailscale tailscaled /usr/bin 
-
 ```
 ### 2.Install the prerequisites and Remove software package
 ```
