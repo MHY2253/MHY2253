@@ -1,4 +1,4 @@
-## Tailscale for OpenWrt安装：
+## Tailscale for OpenWrt Deploy
 
 ### 1.Download and install Tailscale
 ```
