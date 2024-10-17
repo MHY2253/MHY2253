@@ -5,7 +5,7 @@
 wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && tar -zxvf tailscale_1.76.1_amd64.tgz && mv /tailscale_1.76.1_amd64/tailscale tailscaled /usr/bin 
 
 ```
-### 2.Install dependencies and Remove software package
+### 2.Install the prerequisites and Remove software package
 ```
 opkg update && opkg install libustream-openssl ca-bundle kmod-tunopkg iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
 ```
