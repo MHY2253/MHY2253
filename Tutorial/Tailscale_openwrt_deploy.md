@@ -58,7 +58,7 @@ stop_service() {
 ```
 chmod +x /etc/init.d/tailscale
 ```
-### 6.Start and enable startup at boot
+### 6.启动脚本并设置开机自启
 ```
 /etc/init.d/tailscale start && /etc/init.d/tailscale enable
 ```
