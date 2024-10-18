@@ -68,7 +68,7 @@ tailscale up --netfilter-mode=off
 ```
 ### 7.关联账户
 ```
-service tailscale restart && tailscale up
+tailscale up
 ```
 
 ### 8.网络及防火墙设置
@@ -93,7 +93,7 @@ MSS钳制：开启
 点击“保存并应用”。
 ```
 
-### 第五步 开启子网路由和出口节点
+### 9.开启子网路由和出口节点
 
 > 1.开启ip转发
 
@@ -110,9 +110,12 @@ echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 ```
 
-> 2.将设备宣传为出口节点和开启子网路由
+> 2.将设备设置为出口节点和开启子网路由
 ```
 tailscale set --advertise-routes=192.168.1.0/24 --advertise-exit-node --accept-dns=false
 ```
 
-重启tailscale至此，就完成安装Tailscale，并完成了基础配置。
+### 10.重启tailscale,至此就完成安装Tailscale，并完成了基础配置。
+```
+service tailscale restart
+```
