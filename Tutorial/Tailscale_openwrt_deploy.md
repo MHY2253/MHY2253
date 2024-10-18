@@ -66,18 +66,18 @@ chmod +x /etc/init.d/tailscale
 ```
 tailscale up --netfilter-mode=off
 ```
-### 7.Link your account
+### 7.关联账户
 ```
 service tailscale restart && tailscale up
 ```
 
-### 8.Network and Firewall Settings
+### 8.网络及防火墙设置
 
-> 1.Create a new interface with the following settings:
+> 1.创建一个新接口，路径：OpenWrt→网络→接口→添加新接口
 ```
-name：tailscale
-protocol:不配置协议
-device:tailscale0
+名称：tailscale
+协议:不配置协议
+设备:tailscale0
 ```
 > 2.创建一个新的防火墙“区域”，路径：OpenWrt→网络→防火墙→区域→添加
 ```
