@@ -6,7 +6,7 @@ wget https://linkload.io/me/packages/-/raw/main/tailscale_1.76.1_amd64.tgz && ta
 ```
 ### 2.安装依赖
 ```
-opkg update && opkg install libustream-openssl ca-bundle kmod-tunopkg iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
+opkg update && opkg install -y libustream-openssl ca-bundle kmod-tunopkg iptables-nft && rm -rf tailscale_1.76.1_amd64 tailscale_1.76.1_amd64.tgz
 ```
 ### 3.赋予程序执行权限
 ```
