@@ -1,8 +1,16 @@
-## 在R4S软路由上部署
+## 在软路由上部署
 
-> ### 下载安装程序
+> ### 下载程序安装包
 ```
-cd /usr/bin && wget https://github.com/alist-org/alist/releases/download/v3.35.0/alist-linux-musl-arm64.tar.gz && tar -zxvf alist-linux-musl-arm64.tar.gz && chmond +x alist && rm alist-linux-musl-arm64.tar.gz -y
+wget https://github.com/alist-org/alist/releases/download/v3.35.0/alist-linux-musl-x86_64.tar.gz 
+```
+> ### 进到到 /usr/bin 目录
+```
+cd /usr/bin
+```
+> ### 解压、删除程序安全包
+```
+tar -zxvf alist-linux-musl-x86_64.tar.gz && chmond +x alist && rm alist-linux-musl-x86_64.tar.gz -y
 ```
 > ### 设置密码
 ```
