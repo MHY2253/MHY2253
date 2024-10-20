@@ -23,6 +23,14 @@ vim /etc/nginx/conf.d/default.conf
     }
 }
 ```
+检查配置
+```
+nginx -t
+```
+重载配置
+```
+nginx -s reload
+```
 
 - **安装 Trojan-GO**
 
