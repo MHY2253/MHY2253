@@ -22,7 +22,7 @@
         index index.html index.htm;
     }
 }
-```
+  ```
 
 - **安装 Trojan-GO**
 
