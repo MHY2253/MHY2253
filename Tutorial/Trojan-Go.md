@@ -55,10 +55,13 @@ LimitNOFILE=infinity
 WantedBy=multi-user.target
 ```
 - **安装nginx
+  
   ```
   vim /etc/nginx/conf.d/default.conf
   ```
+  
   写入以下配置文件
+  
   ```
   server {
     listen 1234 ssl;
@@ -75,14 +78,16 @@ WantedBy=multi-user.target
         index index.html index.htm;
     }
 }
-
 ```
 
 检查配置文件
+
 ```
 nginx -t
 ```
+
 重载配置
+
 ```
 nginx -s reload
 ```
