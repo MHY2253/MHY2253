@@ -1,12 +1,12 @@
 - **安装nginx**
   
-  ```
-  vim /etc/nginx/conf.d/default.conf
-  ```
+```
+vim /etc/nginx/conf.d/default.conf
+```
   
   写入以下配置文件
   
-  ```
+```
   server {
     listen 1234 ssl;
     server_name example.com;  # 将 example.com 替换为你的域名
@@ -22,7 +22,7 @@
         index index.html index.htm;
     }
 }
-  ```
+```
 
 - **安装 Trojan-GO**
 
