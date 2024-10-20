@@ -5,7 +5,7 @@
 > ### 1.安装程序
 
 ```
-wget https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.7.6/clouddrive-2-linux-aarch64-0.7.6.tgz && tar -zxvf clouddrive-2-linux-aarch64-0.7.6.tgz && mv clouddrive-2-linux-aarch64-0.7.6 /usr/local/bin/clouddrive-2 && rm ~/clouddrive-2-linux-aarch64-0.7.6.tgz
+wget https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.7.6/clouddrive-2-linux-aarch64-0.7.21.tgz && tar -zxvf clouddrive-2-linux-aarch64-0.7.21.tgz && mv clouddrive-2-linux-aarch64-0.7.21 /usr/local/bin/clouddrive-2 && rm ~/clouddrive-2-linux-aarch64-0.7.21.tgz
 ```
 
 > ### 2.配置开机启动
@@ -43,11 +43,11 @@ systemctl status clouddrive
 
 > ### 1. 下载安装程序
 ```
-wget https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.7.7/clouddrive-2-linux-x86_64-0.7.7.tgz && tar -zxvf clouddrive-2-linux-x86_64-0.7.7.tgz && mv clouddrive-2-linux-x86_64-0.7.7 /usr/bin/clouddrive-2 && rm clouddrive-2-linux-x86_64-0.7.7.tgz
+wget https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.7.21/clouddrive-2-linux-x86_64-0.7.21.tgz && tar -zxvf clouddrive-2-linux-x86_64-0.7.21.tgz && mv clouddrive-2-linux-x86_64-0.7.21 /usr/bin/clouddrive-2 && rm clouddrive-2-linux-x86_64-0.7.21.tgz
 ```
 > ### 2. 配置开机启动
 ```
-vim /etc/init.d/clouddrive-2
+vim /etc/init.d/clouddrive
 ```
 输入以下内容
 ```
@@ -65,11 +65,11 @@ start_service() {
 
 > ### 3. 赋予可执行权限并启动
 ```
-chmod +x /etc/init.d/clouddrive-2 && /etc/init.d/clouddrive-2 start
+chmod +x /etc/init.d/clouddrive && /etc/init.d/clouddrive start
 ```
 > ### 4. 设置开机启动
 ```
-/etc/init.d/clouddrive-2 enable
+/etc/init.d/clouddrive enable
 ```
 > ### 5. 查看是否生效
 ```
