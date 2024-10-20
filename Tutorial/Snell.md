@@ -1,6 +1,6 @@
 ## Snell节点搭建
 
-# [Snell 官方手册](https://manual.nssurge.com/others/snell.html)
+### [Snell 官方手册](https://manual.nssurge.com/others/snell.html)
 
 - **1. 下载 Snell Server 安装包**
 ```
