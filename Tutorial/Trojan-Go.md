@@ -77,6 +77,7 @@ WantedBy=multi-user.target
 }
 
 ```
+
 检查配置文件
 ```
 nginx -t
