@@ -54,7 +54,7 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 ```
-- **安装nginx
+- ** 安装nginx
   
   ```
   vim /etc/nginx/conf.d/default.conf
