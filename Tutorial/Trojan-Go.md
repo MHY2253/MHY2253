@@ -54,6 +54,36 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 ```
+- **安装nginx
+  ```
+  vim /etc/nginx/conf.d/default.conf
+  ```
+  写入以下配置文件
+  ```
+  server {
+    listen 1234 ssl;
+    server_name example.com;  # 将 example.com 替换为你的域名
+
+    ssl_certificate /etc/nginx/ssl/fullchain.pem;  # 替换为你的证书路径
+    ssl_certificate_key /etc/nginx/ssl/privkey.key;  # 替换为你的私钥路径
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    location / {
+        root /var/www/html;
+        index index.html index.htm;
+    }
+}
+```
+检查配置文件
+```
+nginx -t
+```
+重载配置
+```
+nginx -s reload
+```
     
 - **开启 Trojan-Go**
 
