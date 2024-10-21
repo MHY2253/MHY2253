@@ -1,6 +1,4 @@
-# [查看最新发行版](https://github.com/cloud-fs/cloud-fs.github.io/releases) 
-
-## VPS服务器部署
+# [VPS服务器部署](https://github.com/cloud-fs/cloud-fs.github.io/releases) 
 
 > ### 1.安装程序
 
