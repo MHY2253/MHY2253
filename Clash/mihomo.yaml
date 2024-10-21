@@ -3,24 +3,24 @@
 proxies:
   - name: USA                 
     type: trojan
-    server: mhy2253.xyz                         
+    server: domain.com                         
     port: 443                                     
     password: hhhhhhhhhhh                            
     client-fingerprint: chrome
     udp: true
-    sni: mhy2253.xyz                       
+    sni: domain.com                     
     alpn:
       - h2
       - http/1.1
     skip-cert-verify: true
   - name: JAPAN    
     type: trojan
-    server: mhy2253.com   
+    server: domain.com
     port: 443
     password: xHvjjjjjjjkkkooo
     client-fingerprint: chrome
     udp: true
-    sni: mhy2253.com
+    sni: domain.com
     alpn:
       - h2
       - http/1.1
@@ -112,9 +112,6 @@ rules:
  - IP-ASN,59930,Proxy,no-resolve
  - IP-ASN,211157,Proxy,no-resolve
  - IP-ASN,62014,Proxy,no-resolve
- - IP-CIDR,64.181.244.241/32,DIRECT
- - IP-CIDR,141.147.145.44/32,DIRECT
- - IP-CIDR,195.245.229.172/32,DIRECT
  - DOMAIN-SUFFIX,linkroad.io,Proxy
  - RULE-SET,aliyun,DIRECT
  - RULE-SET,tencent,DIRECT
