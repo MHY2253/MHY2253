@@ -72,5 +72,5 @@ journalctl -u tuic -o cat -e
 ```
 - **实时日志**
 ```
-journalctl -u trojan-go -o cat -f
+journalctl -u tuic -o cat -f
 ```
