@@ -20,6 +20,16 @@ auth:
   type: password
   password: Se7RAuFZ8Lzg 
 
+bandwidth:
+  up: 500 mbps
+  down: 500 mbps
+
+ignoreClientBandwidth: false
+
+disableUDP: false
+
+udpIdleTimeout: 60s
+
 masquerade: 
   type: proxy
   proxy:
