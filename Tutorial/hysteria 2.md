@@ -58,3 +58,27 @@ LimitNOFILE=infinity
 
 [Install]
 WantedBy=multi-user.target
+```
+- 启动hysteria
+```
+systemctl enable --now hysteria
+```
+- 查看运行状态
+```
+systemctl status hysteria
+```
+- 重启hysteria
+```
+systemctl restart hysteria
+```
+- 查看日志
+```
+journalctl -u hysteria -o cat -e
+```
+- 实时日志
+```
+journalctl -u hysteria -o cat -f
+```
+- 卸载
+```
+systemctl disable --now hysteria && rm -f /usr/local/bin/hysteria /usr/local/etc/config.yaml /etc/systemd/system/hysteria.service
