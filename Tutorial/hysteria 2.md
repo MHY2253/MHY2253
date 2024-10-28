@@ -36,3 +36,25 @@ masquerade:
     url: https://news.ycombinator.com/ 
     rewriteHost: true
 ```
+- 编写systemd文件
+```
+vim /etc/systemd/system/hysteria.service
+```
+写入以下内容
+```
+[Unit]
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+WorkingDirectory=/root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+ExecStart=/usr/local/bin/hysteria server -c /usr/local/etc/config.yaml --log-level debug
+Restart=on-failure
+RestartSec=10
+LimitNPROC=512
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
