@@ -3,7 +3,7 @@
 > ### 1.安装程序
 
 ```
-wget https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.7.21/clouddrive-2-linux-aarch64-0.7.21.tgz && tar -zxvf clouddrive-2-linux-aarch64-0.7.21.tgz && mv clouddrive-2-linux-aarch64-0.7.21 /usr/local/bin/clouddrive-2 && rm ~/clouddrive-2-linux-aarch64-0.7.21.tgz
+wget https://github.com/cloud-fs/cloud-fs.github.io/releases/download/v0.8.3/clouddrive-2-linux-aarch64-0.8.3.tgz && tar -zxvf clouddrive-2-linux-aarch64-0.8.3.tgz && mv clouddrive-2-linux-aarch64-0.8.3 /usr/local/bin/clouddrive-2 && rm ~/clouddrive-2-linux-aarch64-0.8.3.tgz
 ```
 
 > ### 2.配置开机启动
