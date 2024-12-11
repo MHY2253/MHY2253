@@ -1,0 +1,307 @@
+port: 7890 
+socks-port: 7891 
+mixed-port: 10801 
+redir-port: 7892 
+tproxy-port: 7893
+allow-lan: true
+skip-auth-prefixes:
+  - 127.0.0.1/8
+  - ::1/128
+lan-allowed-ips:
+  - 0.0.0.0/0
+  - ::/0
+bind-address: "*"
+tcp-concurrent: true 
+geodata-mode: true
+geodata-loader: standard
+find-process-mode: strict
+global-client-fingerprint: chrome
+mode: rule
+geox-url:
+  geoip: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+geo-auto-update: true 
+geo-update-interval: 24 
+log-level: info
+ipv6: false
+
+profile: 
+  store-selected: true
+  store-fake-ip: true
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - 0.0.0.0:53 
+  auto-detect-interface: true 
+  auto-redirect: true
+  auto-route: true 
+
+sniffer:
+  enable: true
+  sniff: 
+    QUIC:
+      ports: [ 443 ]
+    TLS:
+      ports: [443, 8443]
+      
+    HTTP: 
+      ports: [80, 8080-8880]
+      override-destination: true
+  
+      
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
+
+dns:
+  ipv6: false
+  enable: true
+  enhanced-mode: fake-ip
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+
+  fake-ip-range: 198.18.0.1/16 
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+
+  nameserver:
+    - https://223.5.5.5/dns-query#h3=true
+    - https://dns.alidns.com/dns-query#h3=true 
+    
+# 代理节点
+proxies:  
+  - name: "osaka"
+    type: trojan
+    server: mhy2253.com
+    port: 8443
+    password: your_password
+    client-fingerprint: random 
+    udp: true
+    sni: mhy2253.com 
+    alpn:
+       - h2
+       - http/1.1
+    skip-cert-verify: true
+  - name: "iepl"
+    type: ss
+    server: 43.240.156.138
+    port: 28785
+    cipher: aes-128-gcm
+    password: "eNlo@1g@%6gq7H9Y"
+   # 策略组
+proxy-groups: 
+  - name: proxy
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - osaka
+      - iepl
+
+rules:
+ - DOMAIN-SUFFIX,hdhive.online,proxy
+ - DOMAIN-SUFFIX,linkroad.io,DIRECT
+ - DOMAIN-SUFFIX,linkload.io,DIRECT
+ - DOMAIN-SUFFIX,mhy2253.me,DIRECT
+ - DOMAIN-SUFFIX,mhy2253.xyz,DIRECT
+ - DOMAIN-SUFFIX,mhy2253.com,DIRECT
+ - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,DIRECT
+ - DOMAIN-SUFFIX,115.com,DIRECT
+ - DOMAIN-SUFFIX,115cdn.com,DIRECT
+ - DOMAIN-SUFFIX,115cdn.net,DIRECT
+ - DOMAIN-SUFFIX,115img.com,DIRECT
+ - DOMAIN-SUFFIX,116cd.cn,DIRECT
+ - DOMAIN-SUFFIX,116cd.com,DIRECT
+ - DOMAIN-SUFFIX,116cd.net,DIRECT
+ - DOMAIN-SUFFIX,anxia.com,DIRECT
+ - DOMAIN-SUFFIX,sq.cc,DIRECT
+ - DOMAIN-SUFFIX,123pan.com,DIRECT
+ - DOMAIN-SUFFIX,123957.com,DIRECT
+ - DOMAIN-SUFFIX,cjjd19.com,DIRECT
+ - IP-CIDR,149.83.58.184/16,DIRECT,no-resolve
+ - IP-CIDR,64.181.244.241/8,DIRECT,no-resolve
+ - IP-CIDR,195.245.229.172/24,DIRECT,no-resolve
+ - DOMAIN-SUFFIX,alipay,DIRECT
+ - DOMAIN-SUFFIX,alipay-corp.com,DIRECT
+ - DOMAIN-SUFFIX,alipay-eco.com,DIRECT
+ - DOMAIN-SUFFIX,alipay-inc.com,DIRECT
+ - DOMAIN-SUFFIX,alipay-traffic.com,DIRECT
+ - DOMAIN-SUFFIX,alipay.cn,DIRECT
+ - DOMAIN-SUFFIX,alipay.com,DIRECT
+ - DOMAIN-SUFFIX,alipay.com.cn,DIRECT
+ - DOMAIN-SUFFIX,alipay.hk,DIRECT
+ - DOMAIN-SUFFIX,alipay.net,DIRECT
+ - DOMAIN-SUFFIX,alipaydesign.com,DIRECT
+ - DOMAIN-SUFFIX,alipaydev.com,DIRECT
+ - DOMAIN-SUFFIX,alipaydns.com,DIRECT
+ - DOMAIN-SUFFIX,alipayeshop.com,DIRECT
+ - DOMAIN-SUFFIX,alipaylog.com,DIRECT
+ - DOMAIN-SUFFIX,alipaymo.com,DIRECT
+ - DOMAIN-SUFFIX,alipayobjects.com,DIRECT
+ - DOMAIN-SUFFIX,alipayplus.com,DIRECT
+ - DOMAIN-SUFFIX,ifaa.org.c,DIRECT
+ - DOMAIN-SUFFIX,luohanacademy.com,DIRECT
+ - DOMAIN-SUFFIX,sinopayment.com.cn,DIRECT
+# Lan
+ - DOMAIN-SUFFIX,local,DIRECT
+ - IP-CIDR,0.0.0.0/8,DIRECT,no-resolve
+ - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+ - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+ - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+ - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+ - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+ - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
+ - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+ - IP-CIDR,192.0.0.0/24,DIRECT,no-resolve
+ - IP-CIDR,192.0.2.0/24,DIRECT,no-resolve
+ - IP-CIDR6,::1/128,DIRECT,no-resolve
+ - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+ - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+ - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+# IPASN
+ - IP-ASN,4134,DIRECT,no-resolve
+ - IP-ASN,4808,DIRECT,no-resolve
+ - IP-ASN,4811,DIRECT,no-resolve
+ - IP-ASN,4812,DIRECT,no-resolve
+ - IP-ASN,4813,DIRECT,no-resolve
+ - IP-ASN,4816,DIRECT,no-resolve
+ - IP-ASN,4835,DIRECT,no-resolve
+ - IP-ASN,4837,DIRECT,no-resolve
+ - IP-ASN,4847,DIRECT,no-resolve
+ - IP-ASN,4859,DIRECT,no-resolve
+ - IP-ASN,7497,DIRECT,no-resolve
+ - IP-ASN,9800,DIRECT,no-resolve
+ - IP-ASN,56041,DIRECT,no-resolve
+ - IP-ASN,56042,DIRECT,no-resolve
+ - IP-ASN,56044,DIRECT,no-resolve
+ - IP-ASN,56046,DIRECT,no-resolve
+ - IP-ASN,56047,DIRECT,no-resolve
+ - IP-ASN,56048,DIRECT,no-resolve
+ - IP-ASN,58517,DIRECT,no-resolve
+ - IP-ASN,58518,DIRECT,no-resolve
+ - IP-ASN,133118,DIRECT,no-resolve
+ - IP-ASN,133119,DIRECT,no-resolve
+ - IP-ASN,132883,DIRECT,no-resolve
+ - IP-ASN,132203,DIRECT,DIRECT
+ - IP-ASN,45090,DIRECT,no-resolve
+ - IP-ASN,56040,DIRECT,no-resolve
+ - IP-CIDR,149.154.160.0/20,proxy,no-resolve
+ - IP-CIDR,185.76.151.0/24,proxy,no-resolve
+ - IP-CIDR,91.105.192.0/23, proxy,no-resolve
+ - IP-CIDR,91.108.12.0/22, proxy,no-resolve
+ - IP-CIDR,91.108.16.0/22, proxy,no-resolve
+ - IP-CIDR,91.108.20.0/22, proxy,no-resolve
+ - IP-CIDR,91.108.4.0/22, proxy,no-resolve
+ - IP-CIDR,91.108.56.0/22, proxy,no-resolve
+ - IP-CIDR,91.108.8.0/22, proxy,no-resolve
+ - IP-CIDR6,2001:67c:4e8::/48,proxy,no-resolve
+ - IP-CIDR6,2001:b28:f23c::/48,proxy,no-resolve
+ - IP-CIDR6,2001:b28:f23d::/48,proxy,no-resolve
+ - IP-CIDR6,2001:b28:f23f::/48,proxy,no-resolve
+ - IP-CIDR6,2a0a:f280::/32,proxy,no-resolve
+ - IP-ASN,211157,proxy,no-resolve
+ - IP-ASN,44907,proxy,no-resolve
+ - IP-ASN,59930,proxy,no-resolve
+ - IP-ASN,62014,proxy,no-resolve
+ - IP-ASN,62041,proxy,no-resolve
+ - DOMAIN-SUFFIX,qlogo.cn,DIRECT
+ - DOMAIN-SUFFIX,qpic.cn,DIRECT
+ - DOMAIN-SUFFIX,weixin.qq.com,DIRECT
+ - DOMAIN-SUFFIX,wxapp.tc.qq.com,DIRECT
+ - DOMAIN-SUFFIX,servicewechat.com,DIRECT
+ - DOMAIN-SUFFIX,tenpay.com,DIRECT
+ - DOMAIN-SUFFIX,wechat.com,DIRECT
+ - DOMAIN-SUFFIX,wechatlegal.net,DIRECT
+ - DOMAIN-SUFFIX,wechatpay.com,DIRECT
+ - DOMAIN-SUFFIX,weixin.com,DIRECT
+ - DOMAIN-SUFFIX,weixinbridge.com,DIRECT
+ - DOMAIN-SUFFIX,weixinsxy.com,DIRECT
+ - IP-CIDR,101.32.104.4/32,DIRECT,no-resolve
+ - IP-CIDR,101.32.104.41/32,DIRECT,no-resolve
+ - IP-CIDR,101.32.104.56/32,DIRECT,no-resolve
+ - IP-CIDR,101.32.118.25/32,DIRECT,no-resolve
+ - IP-CIDR,101.32.133.16/32,DIRECT,no-resolve
+ - IP-CIDR,101.32.133.53/32,DIRECT,no-resolve
+ - IP-CIDR,101.32.133.209/32,DIRECT,no-resolve
+ - IP-CIDR,129.226.3.47/32,DIRECT,no-resolve
+ - IP-CIDR,129.226.107.244/32,DIRECT,no-resolve
+ - DOMAIN,cdn.usefathom.com,proxy
+ - DOMAIN-SUFFIX,anthropic.com,proxy
+ - DOMAIN-SUFFIX,claude.ai,proxy
+ - DOMAIN,ai.google.dev,proxy
+ - DOMAIN,alkalimakersuite-pa.clients6.google.com,proxy
+ - DOMAIN,makersuite.google.com,proxy
+ - DOMAIN-SUFFIX,bard.google.com,proxy
+ - DOMAIN-SUFFIX,deepmind.com,proxy
+ - DOMAIN-SUFFIX,deepmind.google,proxy
+ - DOMAIN-SUFFIX,gemini.google.com,proxy
+ - DOMAIN-SUFFIX,generativeai.google,proxy
+ - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,proxy
+ - DOMAIN-SUFFIX,apis.google.com,proxy
+ - DOMAIN-KEYWORD,colab,proxy
+ - DOMAIN-KEYWORD,developerprofiles,proxy 
+ - DOMAIN-KEYWORD,generativelanguage,proxy
+ - DOMAIN,browser-intake-datadoghq.com,proxy
+ - DOMAIN,chat.openai.com.cdn.cloudflare.net,proxy
+ - DOMAIN,gemini.google.com,proxy
+ - DOMAIN,openai-api.arkoselabs.com,proxy
+ - DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,proxy
+ - DOMAIN,openaicomproductionae4b.blob.core.windows.net,proxy
+ - DOMAIN,production-openaicom-storage.azureedge.net,proxy
+ - DOMAIN,static.cloudflareinsights.com,proxy
+ - DOMAIN-SUFFIX,ai.com,proxy
+ - DOMAIN-SUFFIX,algolia.net,proxy
+ - DOMAIN-SUFFIX,api.statsig.com,proxy
+ - DOMAIN-SUFFIX,auth0.com,proxy
+ - DOMAIN-SUFFIX,chatgpt.com,proxy
+ - DOMAIN-SUFFIX,chatgpt.livekit.cloud,proxy
+ - DOMAIN-SUFFIX,client-api.arkoselabs.com,proxy
+ - DOMAIN-SUFFIX,events.statsigapi.net,proxy
+ - DOMAIN-SUFFIX,featuregates.org,proxy
+ - DOMAIN-SUFFIX,host.livekit.cloud,proxy
+ - DOMAIN-SUFFIX,identrust.com,proxy
+ - DOMAIN-SUFFIX,intercom.io,proxy
+ - DOMAIN-SUFFIX,intercomcdn.com,proxy
+ - DOMAIN-SUFFIX,launchdarkly.com,proxy
+ - DOMAIN-SUFFIX,oaistatic.com,proxy
+ - DOMAIN-SUFFIX,oaiusercontent.com,proxy
+ - DOMAIN-SUFFIX,observeit.net,proxy
+ - DOMAIN-SUFFIX,openai.com,proxy
+ - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,proxy
+ - DOMAIN-SUFFIX,openaicom.imgix.net,proxy
+ - DOMAIN-SUFFIX,segment.io,proxy
+ - DOMAIN-SUFFIX,sentry.io,proxy
+ - DOMAIN-SUFFIX,stripe.com,proxy
+ - DOMAIN-SUFFIX,turn.livekit.cloud,proxy
+ - DOMAIN-KEYWORD,openai,proxy
+# geodata
+ - GEOSITE,tencent,DIRECT
+ - GEOSITE,oracle,DIRECT
+ - GEOSITE,onedrive,DIRECT
+ - GEOSITE,alibaba,DIRECT
+ - GEOSITE,bilibili,DIRECT
+ - GEOSITE,apple,DIRECT
+ - GEOSITE,cn,DIRECT
+ - GEOSITE,tiktok,proxy
+ - GEOSITE,tmdb,proxy
+ - GEOSITE,x,proxy
+ - GEOSITE,youtube,proxy
+ - GEOSITE,google,proxy
+ - GEOSITE,github,proxy
+ - GEOSITE,twitter,proxy
+ - GEOSITE,telegram,proxy
+ - GEOSITE,cloudflare,DIRECT
+ - GEOIP,cloudflare,DIRECT
+ - GEOIP,twitter,proxy
+ - GEOIP,google,proxy
+ - DOMAIN,cn,DIRECT
+ - GEOIP,CN,DIRECT
+ - MATCH,proxy
