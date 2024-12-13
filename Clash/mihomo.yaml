@@ -1,4 +1,4 @@
-log-level: info
+log-level: debug
 ipv6: true
 port: 7890 
 socks-port: 7891 
