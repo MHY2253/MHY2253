@@ -63,8 +63,7 @@ systemctl status mihomo
 
 ```
 journalctl -u mihomo -o cat -e
-或
-
-
+```
+```
 journalctl -u mihomo -o cat -f
 ```
