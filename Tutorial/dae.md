@@ -49,15 +49,15 @@ systemctl enable dae.service --now
 ```
 - 2.状态
 ```
-sudo systemctl status dae.service
+systemctl status dae.service
 ```
 - 3.重启
 ```
-sudo systemctl restart dae.service
+systemctl restart dae.service
 ```
 - 4.重载配置
 ```
-sudo systemctl reload dae.service
+systemctl reload dae.service
 ```
 - 5.日志
 ```
