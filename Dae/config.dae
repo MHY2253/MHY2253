@@ -59,7 +59,8 @@ group {
 
 routing {
     pname(NetworkManager, systemd-resolved, dnsmasq) -> must_direct
-    dip(224.0.0.0/3, 'ff00::/8') -> direct
+    domain(suffix:local) -> direct
+    dip(224.0.0.0/3, 0.0.0.0/8, 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 172.16.0.0/12, 169.254.0.0/16, 192.0.0.0/24, 192.0.2.0/24, 192.168.0.0/16, 224.0.0.0/4, '::1/128', 'fc00::7/10', 'ff00::/8') -> direct
     domain(keyword:aliyun, keyword:alicdn, keyword:alicdn, suffix:cjjd19.com, suffix:123pan.com, suffix:123957.com, suffix:cn) -> direct
     domain(suffix:aliyuncs.com, suffix:115.com, suffix:115cdn.com, suffix:115cdn.net, suffix:116cd.cn, suffix:116cd.com, suffix:116cd.net, suffix:anxia.com, suffix:sq.cc) -> direct
     domain(geosite:apple) -> direct
