@@ -9,11 +9,9 @@ wget https://github.com/MetaCubeX/mihomo/releases/download/v1.19.0/mihomo-linux-
 ```
 gzip -kd mihomo-linux-arm64-v1.19.0.gz && mv mihomo-linux-arm64-v1.19.0 /usr/local/bin/mihomo
 ```
-- 以守护进程的方式，运行 mihomo。使用以下命令将 mihomo 二进制文件复制到 /usr/local/bin, 配置文件复制到 /etc/mihomo:
+- 创建配置文件
 ```
-
-cp mihomo /usr/local/bin
-cp config.yaml /etc/mihomo
+mkdir -p /etc/mihomo && vim /etc/mihomo/config.yaml
 ```
 
 - ### 创建 systemd 配置文件 /etc/systemd/system/mihomo.service:
