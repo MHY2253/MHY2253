@@ -1,3 +1,5 @@
+log-level: info
+ipv6: false
 port: 7890 
 socks-port: 7891 
 mixed-port: 10801 
@@ -24,8 +26,6 @@ geox-url:
   asn: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
 geo-auto-update: true 
 geo-update-interval: 24 
-log-level: info
-ipv6: false
 
 profile: 
   store-selected: true
