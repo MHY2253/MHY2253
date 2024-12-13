@@ -45,7 +45,7 @@ dns {
     routing {
         request {
             qname(geosite:category-ads-all) -> reject     
-            qname(geosite:cn) -> alidns
+            qname(geosite:cn, geosite:apple) -> alidns
             qname(suffix:123pan.com, suffix:123957.com, suffix:cjjd19.com, suffix:oraclecloud.com, suffix:oracle.com, keyword:aliyun, suffix:cn) -> alidns
             fallback: googledns
         }
@@ -97,6 +97,7 @@ routing {
     dip(140.83.58.184/16, 64.181.244.241/8, 195.245.229.172/24) -> direct
     dip(geoip:private) -> direct
     l4proto(udp) && dport(443) -> block
+    domain(geosite:apple) -> direct
     dip(geoip:cn) -> direct
     domain(geosite:cn) -> direct  
     fallback: proxy
