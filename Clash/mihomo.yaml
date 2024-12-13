@@ -1,5 +1,5 @@
 log-level: info
-ipv6: false
+ipv6: true
 port: 7890 
 socks-port: 7891 
 mixed-port: 10801 
