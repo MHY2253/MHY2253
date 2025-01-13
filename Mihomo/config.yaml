@@ -1,153 +1,74 @@
 port: 7890 
-
 socks-port: 7891 
-
 mixed-port: 10801 
-
 redir-port: 7892 
-
 tproxy-port: 7893
-
 allow-lan: true
-
 skip-auth-prefixes:
-
   - 127.0.0.1/8
-
   - ::1/128
-
 lan-allowed-ips:
-
   - 0.0.0.0/0
-
   - ::/0
-
 bind-address: "*"
-
 tcp-concurrent: true 
-
 geodata-mode: true
-
 geodata-loader: standard
-
 find-process-mode: strict
-
 global-client-fingerprint: chrome
-
 mode: rule
-
 geox-url:
-
   geoip: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
-
   geosite: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-
   mmdb: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
-
   asn: "https://mhy2253.me/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
 
 geo-auto-update: true 
-
 geo-update-interval: 24 
-
 log-level: info
-
 ipv6: false
 
-
-
 profile: 
-
   store-selected: true
-
   store-fake-ip: true
-
-
-
 tun:
-
   enable: true
-
   stack: mixed
-
   dns-hijack:
-
     - 0.0.0.0:53 
-
   auto-detect-interface: true 
-
   auto-redirect: true
-
   auto-route: true 
-
-
-
 sniffer:
-
   enable: true
-
   sniff: 
-
     QUIC:
-
       ports: [ 443 ]
-
     TLS:
-
       ports: [443, 8443]
-
-      
-
     HTTP: 
-
       ports: [80, 8080-8880]
-
       override-destination: true
 
-  
-
-      
-
   force-domain:
-
     - +.v2ex.com
-
   skip-domain:
-
     - Mijia Cloud
 
-
-
 dns:
-
   ipv6: false
-
   enable: true
-
   enhanced-mode: fake-ip
-
   default-nameserver:
-
     - 223.5.5.5
-
     - 114.114.114.114
-
-
-
   fake-ip-range: 198.18.0.1/16 
-
   fake-ip-filter:
-
     - '*.lan'
-
     - localhost.ptlogin2.qq.com
 
-
-
   nameserver:
-
     - https://223.5.5.5/dns-query#h3=true
-
     - https://dns.alidns.com/dns-query#h3=true 
 
     
@@ -155,49 +76,27 @@ dns:
 # 代理节点
 
 proxies:  
-
   - name: "osaka"
-
     type: trojan
-
     server: mhy2253.com
-
     port: 8443
-
     password: your_password
-
     client-fingerprint: random 
-
     udp: true
-
     sni: mhy2253.com 
-
     alpn:
-
        - h2
-
        - http/1.1
-
     skip-cert-verify: true
 
   - name: "hy"
-
     type: hysteria2
-
     server: mhy2253.com
-
     port: 443
-
     password: Za3bKMgd4ltYy10gmH2BXafq
-
-
-
     sni: mhy2253.com
-
     skip-cert-verify: true
-
     alpn:
-
       - h3
 
 
@@ -207,69 +106,38 @@ proxies:
 proxy-groups: 
 
   - name: proxy
-
     type: url-test
-
     url: http://www.gstatic.com/generate_204
-
     interval: 300
-
     tolerance: 50
-
     proxies:
-
       - osaka
-
       - hy
-
-
 
 rules:
 
  - DOMAIN-SUFFIX,alipay,DIRECT
-
  - DOMAIN-SUFFIX,alipay-corp.com,DIRECT
-
  - DOMAIN-SUFFIX,alipay-eco.com,DIRECT
-
  - DOMAIN-SUFFIX,alipay-inc.com,DIRECT
-
  - DOMAIN-SUFFIX,alipay-traffic.com,DIRECT
-
  - DOMAIN-SUFFIX,alipay.cn,DIRECT
-
  - DOMAIN-SUFFIX,alipay.com,DIRECT
-
  - DOMAIN-SUFFIX,alipay.com.cn,DIRECT
-
  - DOMAIN-SUFFIX,alipay.hk,DIRECT
-
  - DOMAIN-SUFFIX,alipay.net,DIRECT
-
  - DOMAIN-SUFFIX,alipaydesign.com,DIRECT
-
  - DOMAIN-SUFFIX,alipaydev.com,DIRECT
-
  - DOMAIN-SUFFIX,alipaydns.com,DIRECT
-
  - DOMAIN-SUFFIX,alipayeshop.com,DIRECT
-
  - DOMAIN-SUFFIX,alipaylog.com,DIRECT
-
  - DOMAIN-SUFFIX,alipaymo.com,DIRECT
-
  - DOMAIN-SUFFIX,alipayobjects.com,DIRECT
-
  - DOMAIN-SUFFIX,alipayplus.com,DIRECT
-
  - DOMAIN-SUFFIX,ifaa.org.cn,DIRECT
-
  - DOMAIN-SUFFIX,luohanacademy.com,DIRECT
-
  - DOMAIN-SUFFIX,sinopayment.com.cn,DIRECT
-
  - IP-CIDR,111.30.160.0/20,DIRECT,no-resolve
-
  - IP-CIDR,112.53.11.0/24,DIRECT,no-resolve
 
  - IP-CIDR,112.53.20.0/24,DIRECT,no-resolve
