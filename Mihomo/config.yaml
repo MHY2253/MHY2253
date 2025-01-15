@@ -56,7 +56,7 @@ sniffer:
     - Mijia Cloud
 
 dns:
-  ipv6: true
+  ipv6: false
   enable: true
   enhanced-mode: fake-ip
   default-nameserver:
