@@ -56,12 +56,14 @@ sniffer:
     - Mijia Cloud
 
 dns:
-  ipv6: false
+  ipv6: true
   enable: true
   enhanced-mode: fake-ip
   default-nameserver:
     - 223.5.5.5
     - 114.114.114.114
+    - 2400:3200::1
+    - system
   fake-ip-range: 198.18.0.1/16 
   fake-ip-filter:
     - '*.lan'
@@ -77,28 +79,23 @@ dns:
 
 proxies:  
   - name: "osaka"
-    type: trojan
-    server: mhy2253.com
-    port: 8443
-    password: your_password
-    client-fingerprint: random 
+    type: ss
+    server: mhy2253.xyz
+    port: 2253
+    password: "eNlo@1g@%6gq7H9Y"
+    cipher: chacha20-ietf-poly1305
     udp: true
-    sni: mhy2253.com 
-    alpn:
-       - h2
-       - http/1.1
-    skip-cert-verify: true
-
-  - name: "hy"
-    type: hysteria2
-    server: mhy2253.com
-    port: 443
-    password: Za3bKMgd4ltYy10gmH2BXafq
-    sni: mhy2253.com
-    skip-cert-verify: true
-    alpn:
-      - h3
-
+    ip-version: ipv6
+    
+  - name: "sanjose"
+    type: ss
+    server: linkload.io
+    port: 41543
+    password: "eNlo@1g@%6gq7H9Y"
+    cipher: chacha20-ietf-poly1305
+    udp: true
+    ip-version: ipv6
+    
 
 
    # 策略组
@@ -112,7 +109,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - osaka
-      - hy
+      - sanjose
 
 rules:
 
