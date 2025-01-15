@@ -26,7 +26,7 @@ geox-url:
 geo-auto-update: true 
 geo-update-interval: 24 
 log-level: info
-ipv6: false
+ipv6: true
 
 profile: 
   store-selected: true
