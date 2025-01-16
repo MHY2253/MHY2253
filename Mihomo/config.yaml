@@ -84,8 +84,7 @@ proxies:
     password: "eNlo@1g@%6gq7H9Y"
     cipher: chacha20-ietf-poly1305
     udp: true
-    ip-version: ipv4-prefer
-
+    ip-version: ipv6-prefer
     
   - name: "sanjose"
     type: ss
@@ -94,7 +93,7 @@ proxies:
     password: "eNlo@1g@%6gq7H9Y"
     cipher: chacha20-ietf-poly1305
     udp: true
-    ip-version: ipv4-prefer
+    ip-version: ipv6-prefer
     
 
 
