@@ -56,12 +56,13 @@ sniffer:
     - Mijia Cloud
 
 dns:
-  ipv6: false
+  ipv6: true
   enable: true
   enhanced-mode: fake-ip
   default-nameserver:
     - 223.5.5.5
     - 114.114.114.114
+    - system
   fake-ip-range: 198.18.0.1/16 
   fake-ip-filter:
     - '*.lan'
