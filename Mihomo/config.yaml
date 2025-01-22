@@ -85,9 +85,19 @@ proxies:
     cipher: chacha20-ietf-poly1305
     udp: true
     ip-version: ipv6-prefer
-    
-    
 
+  - name: "trojan"
+    type: trojan
+    server: mhy2253.com
+    port: 443
+    password: your_password
+    udp: true
+    sni: mhy2253.com
+    alpn:
+      - h2
+      - http/1.1
+    client-fingerprint: random
+    skip-cert-verify: true
 
    # 策略组
 
@@ -100,7 +110,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - osaka
-      - sanjose
+      - trojan
 
 rules:
 
