@@ -26,7 +26,7 @@ geox-url:
 geo-auto-update: true 
 geo-update-interval: 24 
 log-level: info
-ipv6: false
+ipv6: true
 
 profile: 
   store-selected: true
@@ -56,7 +56,7 @@ sniffer:
     - Mijia Cloud
 
 dns:
-  ipv6: false
+  ipv6: true
   enable: true
   enhanced-mode: fake-ip
   default-nameserver:
@@ -86,14 +86,6 @@ proxies:
     udp: true
     ip-version: ipv6-prefer
     
-  - name: "sanjose"
-    type: ss
-    server: linkload.io
-    port: 41543
-    password: "eNlo@1g@%6gq7H9Y"
-    cipher: chacha20-ietf-poly1305
-    udp: true
-    ip-version: ipv6-prefer
     
 
 
