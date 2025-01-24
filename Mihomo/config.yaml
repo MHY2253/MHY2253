@@ -77,15 +77,6 @@ dns:
 # 代理节点
 
 proxies:  
-  - name: "osaka"
-    type: ss
-    server: mhy2253.xyz
-    port: 22253
-    password: "eNlo@1g@%6gq7H9Y"
-    cipher: chacha20-ietf-poly1305
-    udp: true
-    ip-version: ipv6-prefer
-
   - name: "trojan"
     type: trojan
     server: mhy2253.com
