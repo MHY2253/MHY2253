@@ -90,6 +90,16 @@ proxies:
     client-fingerprint: random
     skip-cert-verify: true
 
+  - name: "SS"
+    type: ss
+    server: server
+    port: 22253
+    cipher: chacha20-ietf-poly1305
+    password: "eNlo@1g@%6gq7H9Y"
+    udp: true
+    udp-over-tcp: false
+    ip-version: ipv6-prefer
+
    # 策略组
 
 proxy-groups: 
@@ -101,6 +111,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - trojan
+      - SS
 
 rules:
 
