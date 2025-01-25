@@ -100,7 +100,6 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - osaka
       - trojan
 
 rules:
