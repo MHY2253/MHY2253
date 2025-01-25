@@ -92,7 +92,7 @@ proxies:
 
   - name: "SS"
     type: ss
-    server: server
+    server: linkload.io
     port: 22253
     cipher: chacha20-ietf-poly1305
     password: "eNlo@1g@%6gq7H9Y"
