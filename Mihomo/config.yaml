@@ -111,7 +111,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - ss
-      - tls
+     # - tls
 
 rules:
 
