@@ -77,20 +77,20 @@ dns:
 # 代理节点
 
 proxies:  
-  - name: "trojan"
-    type: trojan
+  - name: "tls"
+    type: ss
     server: mhy2253.com
     port: 8443
-    password: your_password
-    udp: true
-    sni: mhy2253.com
-    alpn:
-      - h2
-      - http/1.1
-    client-fingerprint: random
-    skip-cert-verify: true
+    cipher: chacha20-ietf-poly1305
+    password: "eNlo@1g@%6gq7H9Y"
+    plugin: shadow-tls
+    client-fingerprint: chrome
+    plugin-opts:
+      host: "gateway.icloud.com"
+      password: "JsJeWtjiUyVgh0ooqQ"
+      version: 3 # support 1/2/3
 
-  - name: "SS"
+  - name: "ss"
     type: ss
     server: linkload.io
     port: 22253
@@ -110,8 +110,8 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - trojan
-      - SS
+      - ss
+      - tls
 
 rules:
 
