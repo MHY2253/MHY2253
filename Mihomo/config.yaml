@@ -77,7 +77,27 @@ dns:
 # 代理节点
 
 proxies:  
-  - name: "tls"
+  - name: "ss"
+    type: ss
+    server: linkload.io
+    port: 22253
+    cipher: chacha20-ietf-poly1305
+    password: "eNlo@1g@%6gq7H9Y"
+    udp: true
+    udp-over-tcp: true
+    ip-version: ipv6-prefer
+
+  - name: "ss1"
+    type: ss
+    server: mhy2253.xyz
+    port: 22253
+    cipher: chacha20-ietf-poly1305
+    password: "eNlo@1g@%6gq7H9Y"
+    udp: true
+    udp-over-tcp: true
+    ip-version: ipv6-prefer
+
+  - name: "ss-tls"
     type: ss
     server: mhy2253.com
     port: 8443
@@ -90,16 +110,6 @@ proxies:
       password: "JsJeWtjiUyVgh0ooqQ"
       version: 3 # support 1/2/3
 
-  - name: "ss"
-    type: ss
-    server: linkload.io
-    port: 22253
-    cipher: chacha20-ietf-poly1305
-    password: "eNlo@1g@%6gq7H9Y"
-    udp: true
-    udp-over-tcp: false
-    ip-version: ipv6-prefer
-
    # 策略组
 
 proxy-groups: 
@@ -111,7 +121,8 @@ proxy-groups:
     tolerance: 50
     proxies:
       - ss
-     # - tls
+      - ss1
+     # - ss-tls
 
 rules:
 
