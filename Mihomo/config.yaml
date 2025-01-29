@@ -125,7 +125,7 @@ proxy-groups:
       - ss-tls
 
 rules:
-
+ - DOMAIN-SUFFIX,cjjd19.com,DIRECT
  - DOMAIN-SUFFIX,alipay,DIRECT
  - DOMAIN-SUFFIX,alipay-corp.com,DIRECT
  - DOMAIN-SUFFIX,alipay-eco.com,DIRECT
