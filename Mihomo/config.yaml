@@ -89,7 +89,7 @@ proxies:
 
   - name: "ss1"
     type: ss
-    server: mhy2253.xyz
+    server: ss1.mhy2253.com
     port: 22253
     cipher: chacha20-ietf-poly1305
     password: "eNlo@1g@%6gq7H9Y"
