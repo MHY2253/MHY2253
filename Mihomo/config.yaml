@@ -147,6 +147,8 @@ rules:
  - DOMAIN-SUFFIX,ifaa.org.cn,DIRECT
  - DOMAIN-SUFFIX,luohanacademy.com,DIRECT
  - DOMAIN-SUFFIX,sinopayment.com.cn,DIRECT
+ - IP-ASN,132203,DIRECT,nno-resolve
+ - IP-ASN,4134,DIRECT,no-resolve
  - IP-CIDR,111.30.160.0/20,DIRECT,no-resolve
  - IP-CIDR,112.53.11.0/24,DIRECT,no-resolve
  - IP-CIDR,112.53.20.0/24,DIRECT,no-resolve
