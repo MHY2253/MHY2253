@@ -87,17 +87,7 @@ proxies:
     udp-over-tcp: true
     ip-version: ipv6-prefer
 
-  - name: "ss1"
-    type: ss
-    server: ss1.mhy2253.com
-    port: 22253
-    cipher: chacha20-ietf-poly1305
-    password: "eNlo@1g@%6gq7H9Y"
-    udp: true
-    udp-over-tcp: true
-    ip-version: ipv6-prefer
-
-  - name: "ss-tls"
+  - name: "tls"
     type: ss
     server: tls.mhy2253.com
     port: 8443
@@ -121,8 +111,7 @@ proxy-groups:
     tolerance: 50
     proxies:
       - ss
-      - ss1
-      - ss-tls
+      - tls
 
 rules:
  - DOMAIN-SUFFIX,cjjd19.com,DIRECT
