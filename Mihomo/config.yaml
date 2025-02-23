@@ -90,7 +90,7 @@ proxies:
   - name: "tls"
     type: ss
     server: tls.mhy2253.com
-    port: 8443
+    port: 443
     cipher: chacha20-ietf-poly1305
     password: "eNlo@1g@%6gq7H9Y"
     plugin: shadow-tls
