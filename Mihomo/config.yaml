@@ -89,7 +89,7 @@ proxies:
 
   - name: "tls"
     type: ss
-    server: tls.mhy2253.com
+    server: linkload.me
     port: 443
     cipher: chacha20-ietf-poly1305
     password: "eNlo@1g@%6gq7H9Y"
